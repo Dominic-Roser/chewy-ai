@@ -1,3 +1,4 @@
 devices/esphome/secrets.yaml
 data/
 devices/esphome/.esphome/
+vendor/

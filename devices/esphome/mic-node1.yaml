@@ -7,17 +7,12 @@ substitutions:
   log_level: INFO
 
 packages:
-  respeaker:
-    url: https://github.com/formatBCE/Respeaker-XVF3800-ESPHome-integration
-    ref: ${respeaker_ref}
-    refresh: 1d
-    files: 
-      packages/base.yaml
-      packages/hardware.yaml
-      packages/voice-assistant.yaml
-      packages/leds-yaml
-      packages/timers-alarm.yaml
-
+  base: !include ../../vendor/respeaker/packages/base.yaml
+  hardware: !include ../../vendor/respeaker/packages/hardware.yaml
+  voice-assistant: !include ../../vendor/respeaker/packages/voice-assistant.yaml
+  leds: !include ../../vendor/respeaker/packages/leds.yaml
+  timers-alarm: !include ../../vendor/respeaker/packages/timers-alarm.yaml
+  
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
