@@ -1,0 +1,37 @@
+services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: homeassistant
+    restart: unless-stopped
+    ports: ["8123:8123"]
+    volumes:
+      ./data/homeassistant:/config
+    environment:
+      - TZ=America/Denver
+      - PUID=1000
+      - PGID=1000
+  
+  whisper:
+    image: raspy/wyoming-whisper
+    container_name: whisper
+    restart: unless-stopped
+    command: --model base-int8 --language en
+    ports: ["10300:10300"]
+    volumes:
+      - ./data/whisper:/data
+  
+  piper:
+    image: raspy/wyoming-piper
+    container_name: piper
+    restart: unless-stopped
+    command: --voice en_US-lessac-medium
+    ports: ["10200:10200"]
+    volumes:
+      - ./data/piper:/data
+  esphome:
+    image: gchr.io/esphome/esphome:latest
+    container_name: esphome
+    restart: unless-stopped
+    ports: ["6052:6052"]
+    volumes:
+      - ./devices/esphome:/config

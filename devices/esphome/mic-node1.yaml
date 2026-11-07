@@ -1,0 +1,33 @@
+# devices/esphome/mic-node1.yaml
+
+substitutions:
+  name: mic-node1
+  friendly_name: Chewbacca Mic Node 1
+  respeaker_ref: main
+  log_level: INFO
+
+packages:
+  respeaker:
+    url: https://github.com/formatBCE/Respeaker-XVF3800-ESPHome-integration
+    ref: ${respeaker_ref}
+    refresh: 1d
+    files: 
+      packages/base.yaml
+      packages/hardware.yaml
+      packages/voice-assistant.yaml
+      packages/leds-yaml
+      packages/timers-alarm.yaml
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+api:
+  encryption:
+    key: !secret api_key
+
+ota:
+  - platform: esphome
+    id: ota_esphome
+    password: !secret ota_password
+    
