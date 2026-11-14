@@ -2,7 +2,7 @@
   "type": "micro",
   "wake_word": "Chewbacca or Chewie",
   "author": "Dominic",
-  "website": "",
+  "website": "https://github.com/kahrendt/microWakeWord",
   "model": "chewbacca.tflite",
   "trained_languages": [
     "en"
